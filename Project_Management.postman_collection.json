@@ -1,0 +1,2638 @@
+{
+	"info": {
+		"_postman_id": "e89237fb-9fca-4f8b-b3b9-3ef99ebfb6da",
+		"name": "Project_Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39063412",
+		"_collection_link": "https://www.postman.com/research-geoscientist-78470583/workspace/my-workspace/collection/39063412-e89237fb-9fca-4f8b-b3b9-3ef99ebfb6da?action=share&source=collection_link&creator=39063412"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/login?email=hala@gmail.com&password=12345678",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "hala@gmail.com"
+								},
+								{
+									"key": "password",
+									"value": "12345678"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "listAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks?=&priority=high&created_by=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": ""
+								},
+								{
+									"key": "priority",
+									"value": "high"
+								},
+								{
+									"key": "created_by",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Design Homepage\",\r\n  \"description\": \"Initial design phase for homepage layout\",\r\n  \"status_id\": 1,\r\n  \"assigned_to\": 2,\r\n  \"priority\": \"high\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"Design two Homepages\",\r\n  \"description\": \"Initial design phase for homepage layout\",\r\n  \"status_id\": 1,\r\n  \"assigned_to\": 3\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "overdue",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/overdue",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"overdue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "completed",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/completed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "latest-attachment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/1/latest-attachment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								"latest-attachment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "high-priority",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/high-priority",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"high-priority"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comment",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/1/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This is a comment for task 1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/tasks/1/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"tasks",
+								"1",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This is a updated comment for task 1\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This is a updated comment for task 1\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This is a updated comment for task 1\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/comments/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"comments",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Attachment",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"This is a updated comment for task 1\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/attachments/1/download",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"attachments",
+								"1",
+								"download"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-name",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"file_name\": \"new-name.pdf\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/attachments/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"attachments",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/attachments/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"attachments",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/attachments/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"attachments",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "add_member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "14",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/1/members",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"1",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "team_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "back-end2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "back-end2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "pending",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "due_date",
+									"value": "2025-07-02",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create_project",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "team_id",
+											"value": "14",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "back-end2",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "back-end2",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "pending",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "due_date",
+											"value": "2025-07-02",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:48:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تم إنشاء المشروع بنجاح.\",\n    \"data\": {\n        \"id\": 7,\n        \"name\": \"back-end2\",\n        \"description\": \"back-end2\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n        \"team\": {\n            \"id\": 14,\n            \"name\": \"DAFADEH ALNENJA13\",\n            \"owner\": {\n                \"id\": 5,\n                \"name\": \"Hanen3\",\n                \"email\": \"hanen3@gmil.com\"\n            },\n            \"members\": [\n                {\n                    \"id\": 16,\n                    \"name\": \"Hanen16\",\n                    \"email\": \"hanen16@gmil.com\"\n                },\n                {\n                    \"id\": 15,\n                    \"name\": \"Hanen15\",\n                    \"email\": \"hanen15@gmil.com\"\n                }\n            ]\n        },\n        \"creator\": {\n            \"id\": 16,\n            \"name\": \"Hanen16\",\n            \"email\": \"hanen16@gmil.com\"\n        },\n        \"created_at\": \"2025-07-02T18:48:34.000000Z\",\n        \"updated_at\": \"2025-07-02T18:48:34.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update_Project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "back-end hala 2**",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update_Project",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "team_id",
+											"value": "14",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "back-end Developer 2**",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/7",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:49:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تم تحديث المشروع بنجاح.\",\n    \"data\": {\n        \"id\": 7,\n        \"name\": \"back-end2\",\n        \"description\": \"back-end Developer 2**\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n        \"team\": {\n            \"id\": 14,\n            \"name\": \"DAFADEH ALNENJA13\",\n            \"owner\": {\n                \"id\": 5,\n                \"name\": \"Hanen3\",\n                \"email\": \"hanen3@gmil.com\"\n            },\n            \"members\": [\n                {\n                    \"id\": 16,\n                    \"name\": \"Hanen16\",\n                    \"email\": \"hanen16@gmil.com\"\n                },\n                {\n                    \"id\": 15,\n                    \"name\": \"Hanen15\",\n                    \"email\": \"hanen15@gmil.com\"\n                }\n            ]\n        },\n        \"creator\": {\n            \"id\": 16,\n            \"name\": \"Hanen16\",\n            \"email\": \"hanen16@gmil.com\"\n        },\n        \"created_at\": \"2025-07-02T18:48:34.000000Z\",\n        \"updated_at\": \"2025-07-02T18:49:05.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get_project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get_project",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/7",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:49:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"Success!\",\n    \"data\": {\n        \"id\": 7,\n        \"name\": \"back-end2\",\n        \"description\": \"back-end Developer 2**\",\n        \"status\": \"pending\",\n        \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n        \"team\": {\n            \"id\": 14,\n            \"name\": \"DAFADEH ALNENJA13\",\n            \"owner\": {\n                \"id\": 5,\n                \"name\": \"Hanen3\",\n                \"email\": \"hanen3@gmil.com\"\n            },\n            \"members\": [\n                {\n                    \"id\": 16,\n                    \"name\": \"Hanen16\",\n                    \"email\": \"hanen16@gmil.com\"\n                },\n                {\n                    \"id\": 15,\n                    \"name\": \"Hanen15\",\n                    \"email\": \"hanen15@gmil.com\"\n                }\n            ]\n        },\n        \"creator\": {\n            \"id\": 16,\n            \"name\": \"Hanen16\",\n            \"email\": \"hanen16@gmil.com\"\n        },\n        \"created_at\": \"2025-07-02T18:48:34.000000Z\",\n        \"updated_at\": \"2025-07-02T18:49:05.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get_all_Projects",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:50:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تم جلب المشاريع بنجاح.\",\n    \"data\": [\n        {\n            \"id\": 7,\n            \"name\": \"back-end2\",\n            \"description\": \"back-end Developer 2**\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"created_at\": \"2025-07-02T18:48:34.000000Z\",\n            \"updated_at\": \"2025-07-02T18:49:05.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"back-end2\",\n            \"description\": \"back-end Developer 2**\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"created_at\": \"2025-07-02T18:41:22.000000Z\",\n            \"updated_at\": \"2025-07-02T18:44:33.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"back-end2\",\n            \"description\": \"back-end2\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"created_at\": \"2025-07-02T06:25:47.000000Z\",\n            \"updated_at\": \"2025-07-02T06:25:47.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"back-end1\",\n            \"description\": \"back-end1\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"created_at\": \"2025-07-02T05:20:49.000000Z\",\n            \"updated_at\": \"2025-07-02T05:20:49.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"back-end1\",\n            \"description\": \"back-end1\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"created_at\": \"2025-07-02T05:17:21.000000Z\",\n            \"updated_at\": \"2025-07-02T05:17:21.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"back-end1\",\n            \"description\": \"back-end Developer 2**\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"created_at\": \"2025-07-02T05:16:42.000000Z\",\n            \"updated_at\": \"2025-07-02T06:26:52.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "delete_project",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/7",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"7"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete_project",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/7",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:51:55 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تم حذف المشروع بنجاح.\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Active",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/projects/active",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"projects",
+								"active"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Active",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/projects/active",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"projects",
+										"active"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:51:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تم جلب المشاريع النشطة بنجاح.\",\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"back-end1\",\n            \"description\": \"back-end Developer 2**\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"team\": {\n                \"id\": 11,\n                \"name\": \"DAFADEH ALNENJA11\",\n                \"owner\": {\n                    \"id\": 7,\n                    \"name\": \"Hanen5\",\n                    \"email\": \"hanen5@gmil.com\"\n                },\n                \"members\": []\n            },\n            \"creator\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"created_at\": \"2025-07-02T05:16:42.000000Z\",\n            \"updated_at\": \"2025-07-02T06:26:52.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"back-end1\",\n            \"description\": \"back-end1\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"team\": {\n                \"id\": 10,\n                \"name\": \"DAFADEH ALNENJA10\",\n                \"owner\": {\n                    \"id\": 7,\n                    \"name\": \"Hanen5\",\n                    \"email\": \"hanen5@gmil.com\"\n                },\n                \"members\": []\n            },\n            \"creator\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"created_at\": \"2025-07-02T05:17:21.000000Z\",\n            \"updated_at\": \"2025-07-02T05:17:21.000000Z\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"back-end1\",\n            \"description\": \"back-end1\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"team\": {\n                \"id\": 5,\n                \"name\": \"DAFADEH ALNENJA5\",\n                \"owner\": {\n                    \"id\": 2,\n                    \"name\": \"Hanen\",\n                    \"email\": \"hanen@gmil.com\"\n                },\n                \"members\": []\n            },\n            \"creator\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"created_at\": \"2025-07-02T05:20:49.000000Z\",\n            \"updated_at\": \"2025-07-02T05:20:49.000000Z\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"back-end2\",\n            \"description\": \"back-end2\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"team\": {\n                \"id\": 5,\n                \"name\": \"DAFADEH ALNENJA5\",\n                \"owner\": {\n                    \"id\": 2,\n                    \"name\": \"Hanen\",\n                    \"email\": \"hanen@gmil.com\"\n                },\n                \"members\": []\n            },\n            \"creator\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"created_at\": \"2025-07-02T06:25:47.000000Z\",\n            \"updated_at\": \"2025-07-02T06:25:47.000000Z\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"back-end2\",\n            \"description\": \"back-end Developer 2**\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"team\": {\n                \"id\": 5,\n                \"name\": \"DAFADEH ALNENJA5\",\n                \"owner\": {\n                    \"id\": 2,\n                    \"name\": \"Hanen\",\n                    \"email\": \"hanen@gmil.com\"\n                },\n                \"members\": []\n            },\n            \"creator\": {\n                \"id\": 16,\n                \"name\": \"Hanen16\",\n                \"email\": \"hanen16@gmil.com\"\n            },\n            \"created_at\": \"2025-07-02T18:41:22.000000Z\",\n            \"updated_at\": \"2025-07-02T18:44:33.000000Z\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"back-end2\",\n            \"description\": \"back-end Developer 2**\",\n            \"status\": \"pending\",\n            \"due_date\": \"2025-07-02T00:00:00.000000Z\",\n            \"team\": {\n                \"id\": 14,\n                \"name\": \"DAFADEH ALNENJA13\",\n                \"owner\": {\n                    \"id\": 5,\n                    \"name\": \"Hanen3\",\n                    \"email\": \"hanen3@gmil.com\"\n                },\n                \"members\": [\n                    {\n                        \"id\": 16,\n                        \"name\": \"Hanen16\",\n                        \"email\": \"hanen16@gmil.com\"\n                    },\n                    {\n                        \"id\": 15,\n                        \"name\": \"Hanen15\",\n                        \"email\": \"hanen15@gmil.com\"\n                    }\n                ]\n            },\n            \"creator\": {\n                \"id\": 16,\n                \"name\": \"Hanen16\",\n                \"email\": \"hanen16@gmil.com\"\n            },\n            \"created_at\": \"2025-07-02T18:48:34.000000Z\",\n            \"updated_at\": \"2025-07-02T18:49:05.000000Z\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User_Management",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "monir",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "monirkfori7@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "12345678",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "member",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/users/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"15"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Team",
+			"item": [
+				{
+					"name": "create_team",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "hala halllllaa",
+									"type": "text"
+								},
+								{
+									"key": "owner_id",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "create_team",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "dafadeh alnenja13",
+											"type": "text"
+										},
+										{
+											"key": "owner_id",
+											"value": "3",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:26:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تم إنشاء الفريق بنجاح.\",\n    \"data\": {\n        \"id\": 13,\n        \"name\": \"DAFADEH ALNENJA13\",\n        \"owner\": {\n            \"id\": 5,\n            \"name\": \"Hanen3\",\n            \"email\": \"hanen3@gmil.com\"\n        },\n        \"members\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update_team",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "dafadeh alninja13*",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams",
+								"13"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update_team",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "hala halllllaa",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams/13",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:27:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تم تحديث بيانات الفريق بنجاح.\",\n    \"data\": {\n        \"id\": 13,\n        \"name\": \"DAFADEH ALNINJA13*\",\n        \"owner\": {\n            \"id\": 5,\n            \"name\": \"Hanen3\",\n            \"email\": \"hanen3@gmil.com\"\n        },\n        \"members\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add_member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams/13/add-member",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams",
+								"13",
+								"add-member"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add_member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "16",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams/13/add-member",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams",
+										"13",
+										"add-member"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:35:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"تمت إضافة العضو إلى الفريق بنجاح.\",\n    \"data\": {\n        \"id\": 13,\n        \"name\": \"DAFADEH ALNINJA13*\",\n        \"owner\": {\n            \"id\": 5,\n            \"name\": \"Hanen3\",\n            \"email\": \"hanen3@gmil.com\"\n        },\n        \"members\": [\n            {\n                \"id\": 16,\n                \"name\": \"Hanen16\",\n                \"email\": \"hanen16@gmil.com\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get_all_team",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get_all_team",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:35:47 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"team retrived successfuly\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"DAFADEH ALNENJA1\",\n            \"owner\": {\n                \"id\": 2,\n                \"name\": \"Hanen\",\n                \"email\": \"hanen@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 2,\n            \"name\": \"DAFADEH ALNENJA2\",\n            \"owner\": {\n                \"id\": 2,\n                \"name\": \"Hanen\",\n                \"email\": \"hanen@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 3,\n            \"name\": \"DAFADEH ALNENJA3\",\n            \"owner\": {\n                \"id\": 2,\n                \"name\": \"Hanen\",\n                \"email\": \"hanen@gmil.com\"\n            },\n            \"members\": [\n                {\n                    \"id\": 6,\n                    \"name\": \"Hanen4\",\n                    \"email\": \"hanen4@gmil.com\"\n                }\n            ]\n        },\n        {\n            \"id\": 4,\n            \"name\": \"DAFADEH ALNENJA4\",\n            \"owner\": {\n                \"id\": 2,\n                \"name\": \"Hanen\",\n                \"email\": \"hanen@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 5,\n            \"name\": \"DAFADEH ALNENJA5\",\n            \"owner\": {\n                \"id\": 2,\n                \"name\": \"Hanen\",\n                \"email\": \"hanen@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 6,\n            \"name\": \"DAFADEH ALNENJA6\",\n            \"owner\": {\n                \"id\": 2,\n                \"name\": \"Hanen\",\n                \"email\": \"hanen@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 7,\n            \"name\": \"DAFADEH ALNENJA7\",\n            \"owner\": {\n                \"id\": 2,\n                \"name\": \"Hanen\",\n                \"email\": \"hanen@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 8,\n            \"name\": \"DAFADEH ALNENJA8\",\n            \"owner\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"members\": [\n                {\n                    \"id\": 8,\n                    \"name\": \"Hanen6\",\n                    \"email\": \"hanen6@gmil.com\"\n                },\n                {\n                    \"id\": 10,\n                    \"name\": \"Hanen10\",\n                    \"email\": \"hanen10@gmil.com\"\n                },\n                {\n                    \"id\": 11,\n                    \"name\": \"Hanen11\",\n                    \"email\": \"hanen11@gmil.com\"\n                },\n                {\n                    \"id\": 12,\n                    \"name\": \"Hanen12\",\n                    \"email\": \"hanen12@gmil.com\"\n                },\n                {\n                    \"id\": 13,\n                    \"name\": \"Hanen13\",\n                    \"email\": \"hanen13@gmil.com\"\n                }\n            ]\n        },\n        {\n            \"id\": 9,\n            \"name\": \"DAFADEH ALNENJA9\",\n            \"owner\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 10,\n            \"name\": \"DAFADEH ALNENJA10\",\n            \"owner\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 11,\n            \"name\": \"DAFADEH ALNENJA11\",\n            \"owner\": {\n                \"id\": 7,\n                \"name\": \"Hanen5\",\n                \"email\": \"hanen5@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 12,\n            \"name\": \"DAFADEH ALNINJA12*\",\n            \"owner\": {\n                \"id\": 9,\n                \"name\": \"Hanen7\",\n                \"email\": \"hanen7@gmil.com\"\n            },\n            \"members\": []\n        },\n        {\n            \"id\": 13,\n            \"name\": \"DAFADEH ALNINJA13*\",\n            \"owner\": {\n                \"id\": 5,\n                \"name\": \"Hanen3\",\n                \"email\": \"hanen3@gmil.com\"\n            },\n            \"members\": [\n                {\n                    \"id\": 16,\n                    \"name\": \"Hanen16\",\n                    \"email\": \"hanen16@gmil.com\"\n                }\n            ]\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Get_team",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams",
+								"13"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get_team",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams/13",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:36:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"team showed successfuly\",\n    \"data\": {\n        \"id\": 13,\n        \"name\": \"DAFADEH ALNINJA13*\",\n        \"owner\": {\n            \"id\": 5,\n            \"name\": \"Hanen3\",\n            \"email\": \"hanen3@gmil.com\"\n        },\n        \"members\": [\n            {\n                \"id\": 16,\n                \"name\": \"Hanen16\",\n                \"email\": \"hanen16@gmil.com\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove_member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "16",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams/13/remove-member",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams",
+								"13",
+								"remove-member"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove_mwmber",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "16",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams/13/remove-member",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams",
+										"13",
+										"remove-member"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:37:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"removed a member successfuly\",\n    \"data\": {\n        \"id\": 13,\n        \"name\": \"DAFADEH ALNINJA13*\",\n        \"owner\": {\n            \"id\": 5,\n            \"name\": \"Hanen3\",\n            \"email\": \"hanen3@gmil.com\"\n        },\n        \"members\": []\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete_team",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams/13",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams",
+								"13"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete_team",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams/13",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:37:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"removed a team successfuly\",\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get_min",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{vault:authorization-secret}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "HaneenR@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "hane123456e",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/teams/fewest-members",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"teams",
+								"fewest-members"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get_min",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/teams/fewest-members",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"teams",
+										"fewest-members"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 02 Jul 2025 18:37:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": true,\n    \"message\": \"minest member team retrived successfuly\",\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"DAFADEH ALNENJA1\",\n        \"owner\": {\n            \"id\": 2,\n            \"name\": \"Hanen\",\n            \"email\": \"hanen@gmil.com\"\n        },\n        \"members\": []\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
